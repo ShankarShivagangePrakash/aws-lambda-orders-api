@@ -22,6 +22,21 @@ Resources:
           Properties:
             Path: /orders
             Method: POST
+  ReadOrderFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ordersapi
+      Handler: com.ordersapi.lambda.ReadOrderLambda::getOrder
+      Runtime: java17
+      Architectures:
+      - x86_64
+      MemorySize: 512
+      Events:
+        OrderEvents:
+          Type: Api
+          Properties:
+            Path: /orders
+            Method: GET
 
   ApplicationResourceGroup:
     Type: AWS::ResourceGroups::Group
