@@ -66,3 +66,15 @@ Resources:
         Ref: ApplicationResourceGroup
       AutoConfigurationEnabled: 'true'
 
+Outputs:
+  CreateOrderAPI:
+    Description: "API gateway endpoint for create order"
+    Value: !Sub https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/orders
+  CreateOrderFunction:
+    Description: "Create Order Lambda function ARN (Amazon Resource Number)"
+    Value: !GetAtt CreateOrderFunction.Arn
+  CreateOrderFunctionRole:
+    Description: "Create Order Lambda function ARN (Amazon Resource Number)"
+    Value: !GetAtt CreateOrderFunctionRole.Arn
+
+
